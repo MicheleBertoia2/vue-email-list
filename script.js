@@ -16,18 +16,21 @@ createApp({
         .then ((result) => {
           this.mails.push(result.data.response);
         })
+        .catch(errore => {
+          console.log(errore);
+        })
     },
 
     getMails(){
       for (let i = 0; i < 10; i++) {
         this.getApi();
       }
+      this.isLoading = false;
     }
   },
 
   mounted(){
-    this.getMails(),
-    console.log(this.mails);
+    this.getMails()
   }
 
 }).mount('#app')
